@@ -131,14 +131,14 @@ import { Button } from '../../../components/ui/button'
 
 **실제 매핑 (tsconfig.json 기준):**
 
-| 별칭 | 실제 경로 |
-|------|-----------|
-| `@/components` | `./components` |
+| 별칭              | 실제 경로         |
+| ----------------- | ----------------- |
+| `@/components`    | `./components`    |
 | `@/components/ui` | `./components/ui` |
-| `@/lib` | `./lib` |
-| `@/lib/utils` | `./lib/utils.ts` |
-| `@/hooks` | `./hooks` |
-| `@/app` | `./app` |
+| `@/lib`           | `./lib`           |
+| `@/lib/utils`     | `./lib/utils.ts`  |
+| `@/hooks`         | `./hooks`         |
+| `@/app`           | `./app`           |
 
 > `components.json`의 aliases와 tsconfig의 `@/*: ["./*"]`가 일치하므로, `@/` 접두사만 사용하면 됩니다.
 

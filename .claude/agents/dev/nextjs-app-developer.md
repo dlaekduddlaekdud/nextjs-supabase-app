@@ -385,8 +385,7 @@ Phase 6: 검토 및 최적화 (Sequential Thinking)
 // Thought 1: 요구사항 분석
 mcp__sequential -
   thinking__sequentialthinking({
-    thought:
-      '요구사항 분석: 3개 주요 페이지 (대시보드, 프로필, 설정) + 인증 시스템',
+    thought: '요구사항 분석: 3개 주요 페이지 (대시보드, 프로필, 설정) + 인증 시스템',
     thoughtNumber: 1,
     totalThoughts: 5,
     nextThoughtNeeded: true,
@@ -414,8 +413,7 @@ mcp__sequential -
 // Thought 3: 레이아웃 계층 설계
 mcp__sequential -
   thinking__sequentialthinking({
-    thought:
-      '레이아웃: Root Layout (전역) → Authenticated Layout (네비게이션) → 페이지',
+    thought: '레이아웃: Root Layout (전역) → Authenticated Layout (네비게이션) → 페이지',
     thoughtNumber: 3,
     totalThoughts: 5,
     nextThoughtNeeded: true,
@@ -429,8 +427,7 @@ mcp__sequential -
 // Thought 4: 추가 기능 결정
 mcp__sequential -
   thinking__sequentialthinking({
-    thought:
-      '특수 파일: loading.tsx (스켈레톤), error.tsx (에러 바운더리), 병렬 라우트 불필요',
+    thought: '특수 파일: loading.tsx (스켈레톤), error.tsx (에러 바운더리), 병렬 라우트 불필요',
     thoughtNumber: 4,
     totalThoughts: 5,
     nextThoughtNeeded: true,
@@ -440,8 +437,7 @@ mcp__sequential -
 // Thought 5: 성능 최적화
 mcp__sequential -
   thinking__sequentialthinking({
-    thought:
-      '최적화: 서버 컴포넌트 우선, Suspense로 데이터 페칭 분리, 메타데이터 각 페이지별 설정',
+    thought: '최적화: 서버 컴포넌트 우선, Suspense로 데이터 페칭 분리, 메타데이터 각 페이지별 설정',
     thoughtNumber: 5,
     totalThoughts: 5,
     nextThoughtNeeded: false,
@@ -635,8 +631,7 @@ export default function DashboardError({
 // Thought 1: 구조 적절성 확인
 mcp__sequential -
   thinking__sequentialthinking({
-    thought:
-      '구조 검토: 라우트 그룹으로 인증 영역 명확히 분리, 공통 레이아웃 재사용 최적화',
+    thought: '구조 검토: 라우트 그룹으로 인증 영역 명확히 분리, 공통 레이아웃 재사용 최적화',
     thoughtNumber: 1,
     totalThoughts: 4,
     nextThoughtNeeded: true,
@@ -663,8 +658,7 @@ mcp__sequential -
 // Thought 3: 확장 가능성
 mcp__sequential -
   thinking__sequentialthinking({
-    thought:
-      '확장성 평가: 새 페이지 추가 용이, 레이아웃 변경 시 영향 범위 최소화',
+    thought: '확장성 평가: 새 페이지 추가 용이, 레이아웃 변경 시 영향 범위 최소화',
     thoughtNumber: 3,
     totalThoughts: 4,
     nextThoughtNeeded: true,
@@ -677,8 +671,7 @@ mcp__sequential -
 // Thought 4: 개선 포인트
 mcp__sequential -
   thinking__sequentialthinking({
-    thought:
-      '개선 제안: middleware.ts 추가, not-found.tsx 커스터마이징, @stats 병렬 라우트 고려',
+    thought: '개선 제안: middleware.ts 추가, not-found.tsx 커스터마이징, @stats 병렬 라우트 고려',
     thoughtNumber: 4,
     totalThoughts: 4,
     nextThoughtNeeded: false,

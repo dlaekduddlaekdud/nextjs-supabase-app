@@ -198,8 +198,8 @@ export function ThemeToggle() {
       size="icon"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
     >
-      <Sun className="h-4 w-4 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-      <Moon className="absolute h-4 w-4 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">테마 전환</span>
     </Button>
   )
@@ -407,22 +407,26 @@ import 'tw-animate-css'
 ## ✅ 스타일링 체크리스트
 
 ### 기본 사항
+
 - [ ] Tailwind v3 유틸리티 클래스 사용 (v4 문법 금지)
 - [ ] `cn()` 함수로 클래스 조합
 - [ ] 시맨틱 색상 변수 사용 (`bg-background`, `text-foreground` 등)
 - [ ] 반응형 디자인 (모바일 우선)
 
 ### 다크모드
+
 - [ ] 하드코딩된 색상 없음
 - [ ] CSS 변수 기반 색상 사용
 - [ ] 테마 전환 시 깨짐 없음
 
 ### 애니메이션
+
 - [ ] `tailwindcss-animate` 클래스 사용 (별도 import 없음)
 - [ ] 불필요한 애니메이션 없음
 - [ ] `will-change` 적절히 사용
 
 ### 접근성
+
 - [ ] 충분한 색상 대비
 - [ ] 포커스 상태 스타일링 (`focus-visible:ring-*`)
 - [ ] 스크린 리더 고려 (`sr-only`)

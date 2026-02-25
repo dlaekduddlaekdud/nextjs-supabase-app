@@ -27,14 +27,7 @@ interface UserStatusProps {
 }
 
 export function UserStatus({ isOnline }: UserStatusProps) {
-  return (
-    <div
-      className={cn(
-        'h-3 w-3 rounded-full',
-        isOnline ? 'bg-green-500' : 'bg-gray-400'
-      )}
-    />
-  )
+  return <div className={cn('h-3 w-3 rounded-full', isOnline ? 'bg-green-500' : 'bg-gray-400')} />
 }
 
 // ❌ 여러 책임이 섞인 컴포넌트
@@ -97,7 +90,7 @@ export default async function UserListPage() {
 async function UserList({ users }: { users: User[] }) {
   return (
     <div className="grid gap-4">
-      {users.map(user => (
+      {users.map((user) => (
         <UserCard key={user.id} user={user} />
       ))}
     </div>
@@ -121,7 +114,7 @@ export function UserSearchForm() {
     <div>
       <input
         value={query}
-        onChange={e => setQuery(e.target.value)}
+        onChange={(e) => setQuery(e.target.value)}
         placeholder="사용자 검색..."
       />
     </div>
@@ -135,10 +128,10 @@ interface ActionState {
 }
 
 export function UserForm() {
-  const [state, formAction, isPending] = useActionState<ActionState, FormData>(
-    updateUserAction,
-    { success: false, message: '' }
-  )
+  const [state, formAction, isPending] = useActionState<ActionState, FormData>(updateUserAction, {
+    success: false,
+    message: '',
+  })
 
   return (
     <form action={formAction}>
@@ -156,11 +149,7 @@ export function UserForm() {
 
 ```tsx
 // ✅ Next.js 16: params는 반드시 await
-export default async function ProductPage({
-  params,
-}: {
-  params: Promise<{ id: string }>
-}) {
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const product = await getProduct(id)
 
@@ -189,11 +178,7 @@ interface ProductInteractionsProps {
 
 export function ProductInteractions({ productId }: ProductInteractionsProps) {
   const [liked, setLiked] = useState(false)
-  return (
-    <button onClick={() => setLiked(!liked)}>
-      {liked ? '❤️' : '🤍'}
-    </button>
-  )
+  return <button onClick={() => setLiked(!liked)}>{liked ? '❤️' : '🤍'}</button>
 }
 ```
 
@@ -280,27 +265,24 @@ export function Text<T extends React.ElementType = 'p'>({
 import { cva, type VariantProps } from 'class-variance-authority'
 
 // ✅ CVA로 변형 정의
-const cardVariants = cva(
-  'rounded-lg border bg-card text-card-foreground shadow-sm',
-  {
-    variants: {
-      variant: {
-        default: 'border-border',
-        outline: 'border-2',
-        ghost: 'border-transparent shadow-none',
-      },
-      size: {
-        sm: 'p-4',
-        md: 'p-6',
-        lg: 'p-8',
-      },
+const cardVariants = cva('rounded-lg border bg-card text-card-foreground shadow-sm', {
+  variants: {
+    variant: {
+      default: 'border-border',
+      outline: 'border-2',
+      ghost: 'border-transparent shadow-none',
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'md',
+    size: {
+      sm: 'p-4',
+      md: 'p-6',
+      lg: 'p-8',
     },
-  }
-)
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+  },
+})
 
 interface CardProps extends VariantProps<typeof cardVariants> {
   children: React.ReactNode
@@ -308,11 +290,7 @@ interface CardProps extends VariantProps<typeof cardVariants> {
 }
 
 export function Card({ variant, size, className, children }: CardProps) {
-  return (
-    <div className={cn(cardVariants({ variant, size }), className)}>
-      {children}
-    </div>
-  )
+  return <div className={cn(cardVariants({ variant, size }), className)}>{children}</div>
 }
 ```
 
@@ -340,7 +318,7 @@ export function Accordion({
   const [openItems, setOpenItems] = useState<Set<string>>(new Set())
 
   const toggle = (value: string) => {
-    setOpenItems(prev => {
+    setOpenItems((prev) => {
       const newSet = new Set(prev)
       if (newSet.has(value)) {
         newSet.delete(value)
@@ -359,7 +337,13 @@ export function Accordion({
   )
 }
 
-export function AccordionTrigger({ children, value }: { children: React.ReactNode; value: string }) {
+export function AccordionTrigger({
+  children,
+  value,
+}: {
+  children: React.ReactNode
+  value: string
+}) {
   const ctx = useContext(AccordionContext)
   if (!ctx) throw new Error('AccordionContext 없음')
 
@@ -370,7 +354,13 @@ export function AccordionTrigger({ children, value }: { children: React.ReactNod
   )
 }
 
-export function AccordionContent({ children, value }: { children: React.ReactNode; value: string }) {
+export function AccordionContent({
+  children,
+  value,
+}: {
+  children: React.ReactNode
+  value: string
+}) {
   const ctx = useContext(AccordionContext)
   if (!ctx) throw new Error('AccordionContext 없음')
 
@@ -399,7 +389,7 @@ export const ExpensiveComponent = memo(function ExpensiveComponent({
   onUpdate: (id: string) => void
 }) {
   const processedData = useMemo(
-    () => data.map(item => ({ ...item, calculated: expensiveCalculation(item) })),
+    () => data.map((item) => ({ ...item, calculated: expensiveCalculation(item) })),
     [data]
   )
 
@@ -407,7 +397,7 @@ export const ExpensiveComponent = memo(function ExpensiveComponent({
 
   return (
     <div>
-      {processedData.map(item => (
+      {processedData.map((item) => (
         <ExpensiveItem key={item.id} item={item} onUpdate={handleUpdate} />
       ))}
     </div>
@@ -465,13 +455,13 @@ export function Select<T>({
   return (
     <select
       value={value ? getValue(value) : ''}
-      onChange={e => {
-        const selected = options.find(o => getValue(o) === e.target.value)
+      onChange={(e) => {
+        const selected = options.find((o) => getValue(o) === e.target.value)
         if (selected) onChange(selected)
       }}
       className={className}
     >
-      {options.map(option => (
+      {options.map((option) => (
         <option key={getValue(option)} value={getValue(option)}>
           {getLabel(option)}
         </option>
@@ -481,12 +471,12 @@ export function Select<T>({
 }
 
 // 사용법 (완전한 타입 추론)
-<Select<User>
+;<Select<User>
   options={users}
   value={selectedUser}
   onChange={setSelectedUser}
-  getLabel={user => user.name}
-  getValue={user => user.id}
+  getLabel={(user) => user.name}
+  getValue={(user) => user.id}
 />
 ```
 
@@ -502,7 +492,7 @@ import { useState, useCallback } from 'react'
 function useToggle(initialValue = false) {
   const [value, setValue] = useState(initialValue)
 
-  const toggle = useCallback(() => setValue(prev => !prev), [])
+  const toggle = useCallback(() => setValue((prev) => !prev), [])
   const setTrue = useCallback(() => setValue(true), [])
   const setFalse = useCallback(() => setValue(false), [])
 
@@ -554,9 +544,9 @@ function cartReducer(state: CartState, action: CartAction): CartState {
       }
     case 'REMOVE_ITEM':
       return {
-        items: state.items.filter(i => i.id !== action.payload),
+        items: state.items.filter((i) => i.id !== action.payload),
         total: state.items
-          .filter(i => i.id !== action.payload)
+          .filter((i) => i.id !== action.payload)
           .reduce((sum, i) => sum + i.price, 0),
       }
     case 'CLEAR_CART':
@@ -574,11 +564,7 @@ const CartContext = createContext<{
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [], total: 0 })
 
-  return (
-    <CartContext.Provider value={{ state, dispatch }}>
-      {children}
-    </CartContext.Provider>
-  )
+  return <CartContext.Provider value={{ state, dispatch }}>{children}</CartContext.Provider>
 }
 
 export function useCart() {

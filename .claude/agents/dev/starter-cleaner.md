@@ -260,13 +260,17 @@ PRD에서 추출한 정보로 다음 섹션을 자동 생성:
 [표준 Next.js 실행 방법]
 
 \`\`\`bash
+
 # 의존성 설치
+
 npm install
 
 # 개발 서버 실행
+
 npm run dev
 
 # 빌드
+
 npm run build
 \`\`\`
 

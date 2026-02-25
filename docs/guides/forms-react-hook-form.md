@@ -66,11 +66,11 @@ export const registerSchema = z
     email: emailSchema,
     password: passwordSchema,
     confirmPassword: z.string(),
-    terms: z.boolean().refine(val => val === true, {
+    terms: z.boolean().refine((val) => val === true, {
       message: '이용약관에 동의해주세요',
     }),
   })
-  .refine(data => data.password === data.confirmPassword, {
+  .refine((data) => data.password === data.confirmPassword, {
     message: '비밀번호가 일치하지 않습니다',
     path: ['confirmPassword'],
   })

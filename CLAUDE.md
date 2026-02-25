@@ -5,13 +5,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 개발 명령어
 
 ```bash
-npm run dev      # 개발 서버 실행 (localhost:3000)
-npm run build    # 프로덕션 빌드 (타입 에러 포함 확인)
-npm run lint     # ESLint 검사
-npm run start    # 프로덕션 서버 실행
+npm run dev           # 개발 서버 실행 (localhost:3000)
+npm run build         # 프로덕션 빌드 (타입 에러 포함 확인)
+npm run start         # 프로덕션 서버 실행
+npm run typecheck     # TypeScript 타입 검사 (tsc --noEmit)
+npm run lint          # ESLint 검사
+npm run lint:fix      # ESLint 자동 수정
+npm run format        # Prettier 포맷 적용
+npm run format:check  # Prettier 포맷 검사
+npm run check         # typecheck + lint + format:check 전체 검사
 ```
 
-테스트 설정 없음. 타입 검증은 `npm run build`로 수행한다.
+테스트 설정 없음. 코드 제출 전 `npm run check`로 전체 검사 권장.
 
 ## 환경변수
 
@@ -89,11 +94,7 @@ const supabase = createClient()
 
 ```typescript
 // params/searchParams는 반드시 await
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>
-}) {
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
 }
 ```
