@@ -7,13 +7,12 @@ export default function Page() {
         <div className="flex flex-col gap-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">Thank you for signing up!</CardTitle>
-              <CardDescription>Check your email to confirm</CardDescription>
+              <CardTitle className="text-2xl">가입을 완료해주세요!</CardTitle>
+              <CardDescription>이메일을 확인하여 계정을 인증하세요</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                You&apos;ve successfully signed up. Please check your email to confirm your account
-                before signing in.
+                회원가입이 완료되었습니다. 이메일을 확인하여 계정 인증 후 로그인해 주세요.
               </p>
             </CardContent>
           </Card>

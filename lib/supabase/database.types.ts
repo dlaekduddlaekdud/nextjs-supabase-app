@@ -10,28 +10,265 @@ export type Database = {
     Tables: {
       profiles: {
         Row: {
-          avatar_url: string | null
-          full_name: string | null
           id: string
+          email: string | null
+          full_name: string | null
+          avatar_url: string | null
           updated_at: string
-          username: string | null
-          website: string | null
         }
         Insert: {
-          avatar_url?: string | null
-          full_name?: string | null
           id: string
+          email?: string | null
+          full_name?: string | null
+          avatar_url?: string | null
           updated_at?: string
-          username?: string | null
-          website?: string | null
         }
         Update: {
-          avatar_url?: string | null
-          full_name?: string | null
           id?: string
+          email?: string | null
+          full_name?: string | null
+          avatar_url?: string | null
           updated_at?: string
-          username?: string | null
-          website?: string | null
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          id: string
+          title: string
+          description: string | null
+          location: string | null
+          starts_at: string
+          ends_at: string | null
+          status: 'active' | 'cancelled' | 'completed'
+          host_id: string
+          has_expense: boolean
+          has_carpool: boolean
+          rsvp_due_at: string | null
+          invite_code: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          description?: string | null
+          location?: string | null
+          starts_at: string
+          ends_at?: string | null
+          status?: 'active' | 'cancelled' | 'completed'
+          host_id: string
+          has_expense?: boolean
+          has_carpool?: boolean
+          rsvp_due_at?: string | null
+          invite_code?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string | null
+          location?: string | null
+          starts_at?: string
+          ends_at?: string | null
+          status?: 'active' | 'cancelled' | 'completed'
+          host_id?: string
+          has_expense?: boolean
+          has_carpool?: boolean
+          rsvp_due_at?: string | null
+          invite_code?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      event_members: {
+        Row: {
+          id: string
+          event_id: string
+          user_id: string
+          role: 'host' | 'co_host' | 'member'
+          rsvp: 'pending' | 'attending' | 'declined'
+          joined_at: string
+        }
+        Insert: {
+          id?: string
+          event_id: string
+          user_id: string
+          role?: 'host' | 'co_host' | 'member'
+          rsvp?: 'pending' | 'attending' | 'declined'
+          joined_at?: string
+        }
+        Update: {
+          id?: string
+          event_id?: string
+          user_id?: string
+          role?: 'host' | 'co_host' | 'member'
+          rsvp?: 'pending' | 'attending' | 'declined'
+          joined_at?: string
+        }
+        Relationships: []
+      }
+      invitations: {
+        Row: {
+          id: string
+          event_id: string
+          invited_by: string
+          email: string
+          token: string
+          status: 'pending' | 'accepted' | 'declined' | 'expired'
+          expires_at: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          event_id: string
+          invited_by: string
+          email: string
+          token?: string
+          status?: 'pending' | 'accepted' | 'declined' | 'expired'
+          expires_at?: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          event_id?: string
+          invited_by?: string
+          email?: string
+          token?: string
+          status?: 'pending' | 'accepted' | 'declined' | 'expired'
+          expires_at?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+      announcements: {
+        Row: {
+          id: string
+          event_id: string
+          author_id: string
+          title: string
+          body: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          event_id: string
+          author_id: string
+          title: string
+          body: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          event_id?: string
+          author_id?: string
+          title?: string
+          body?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+      expenses: {
+        Row: {
+          id: string
+          event_id: string
+          paid_by: string
+          title: string
+          amount: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          event_id: string
+          paid_by: string
+          title: string
+          amount: number
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          event_id?: string
+          paid_by?: string
+          title?: string
+          amount?: number
+          created_at?: string
+        }
+        Relationships: []
+      }
+      expense_splits: {
+        Row: {
+          id: string
+          expense_id: string
+          user_id: string
+          amount: number
+          is_settled: boolean
+        }
+        Insert: {
+          id?: string
+          expense_id: string
+          user_id: string
+          amount: number
+          is_settled?: boolean
+        }
+        Update: {
+          id?: string
+          expense_id?: string
+          user_id?: string
+          amount?: number
+          is_settled?: boolean
+        }
+        Relationships: []
+      }
+      carpool_offers: {
+        Row: {
+          id: string
+          event_id: string
+          driver_id: string
+          departure: string
+          seats: number
+          note: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          event_id: string
+          driver_id: string
+          departure: string
+          seats: number
+          note?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          event_id?: string
+          driver_id?: string
+          departure?: string
+          seats?: number
+          note?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      carpool_passengers: {
+        Row: {
+          id: string
+          offer_id: string
+          user_id: string
+          status: 'pending' | 'confirmed' | 'rejected'
+        }
+        Insert: {
+          id?: string
+          offer_id: string
+          user_id: string
+          status?: 'pending' | 'confirmed' | 'rejected'
+        }
+        Update: {
+          id?: string
+          offer_id?: string
+          user_id?: string
+          status?: 'pending' | 'confirmed' | 'rejected'
         }
         Relationships: []
       }
@@ -40,7 +277,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_event_by_invite_code: {
+        Args: { p_code: string }
+        Returns: { id: string; status: string }[]
+      }
     }
     Enums: {
       [_ in never]: never

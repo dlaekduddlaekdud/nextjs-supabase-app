@@ -43,3 +43,6 @@ next-env.d.ts
 
 # task manager runtime data
 shrimp_data/
+
+# playwright mcp 임시 파일 (로그, 스크린샷)
+.playwright-mcp/
